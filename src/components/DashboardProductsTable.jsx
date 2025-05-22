@@ -37,9 +37,7 @@ import CustomModal from "../shared/Modal";
 import ProductTableSkeleton from "./ProductTableSkeleton";
 import { useSelector } from "react-redux";
 import { selectedNetwork } from "../app/features/networkSlice";
-// import {createStandaloneToast} from "@chakra-ui/react";
 
-// const { toast } = createStandaloneToast();
 
 const DashboardProductsTable = () => {
   const { data, isLoading, error } = useGetDashboardProductsQuery({ page: 1 });
@@ -71,7 +69,6 @@ const DashboardProductsTable = () => {
 
   // Category
   const { data: categoriesData } = useGetDashboardCategoriesQuery();
-  console.log(categoriesData, "categoriesData");
 
   const [productToDelete, setProductToDelete] = useState(null);
 
@@ -229,7 +226,6 @@ const DashboardProductsTable = () => {
       .catch((err) => {
         console.log(err);
       });
-      console.log(productToEdit, "productToEdit from submit edit handler");
 
   };
 
@@ -297,7 +293,6 @@ const DashboardProductsTable = () => {
           </Thead>
           <Tbody>
             {data.data.map((product) => {
-              console.log(product, "product from map");
               const cates = product.categories?.map((item) => (
                 <span key={item.id} mr={3}>
                   {item.name}
@@ -351,7 +346,6 @@ const DashboardProductsTable = () => {
                       mr={3}
                       onClick={() => {
                         setSelectedCategory(product.categories[0]);
-                        console.log(selectedCategory, "selectedCategory");
                         onModalOpen();
                         setProductToEdit(product);
                         setProductClickedId(product.documentId);

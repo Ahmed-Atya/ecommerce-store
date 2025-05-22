@@ -147,7 +147,6 @@ const HomePage = () => {
   if (!categoriesData) {
     return <Text>No categories found</Text>;
   }
-  console.log(categoriesData)
   return (
     // Categories
     <Container maxWidth="100%" sx={{ mt: 4 }}>
