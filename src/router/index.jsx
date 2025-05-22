@@ -13,8 +13,8 @@ import cookieService from "../services/cookies";
 
 import DashboardLayout from "../layout/dashboardLayout.jsx";
 import DashboardSettings from "../pages/dashboard/DashboardSettings.jsx";
-import DashboardCategories from "../pages/dashboard/dashboardCategories.jsx";
 import HomeDashboard from "../pages/dashboard/index";
+import DashboardCategories from "../pages/dashboard/DashboardCategories";
 import DashboardProducts from "../pages/dashboard/DashboardProducts";
 import DashboardUsers from "../pages/dashboard/DashboardUsers";
 import RegisterPage from "../pages/registerPage.jsx";
