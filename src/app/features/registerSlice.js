@@ -72,15 +72,13 @@ const registerSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         toast({
-          title: action.payload?.responseData?.error?.message || "Login Failed",
-          description:
-            action.payload?.responseData?.error?.message ||
-            "Invalid credentials",
+          title: "Registration Failed",
+          description: action.payload.message,
           status: "error",
-          duration: 9000,
+          duration: 3000,
           isClosable: true,
         });
-      });
+      })
   },
 });
 
