@@ -129,9 +129,14 @@ export default function Nav() {
                 </MenuList>
               </Menu>
             ) : (
+             <>
               <Link as={RouterLink} to="/login">
                 login
               </Link>
+              <Link as={RouterLink} to="/login">
+                login
+              </Link>
+             </>
             )}
           </HStack>
         </Flex>
