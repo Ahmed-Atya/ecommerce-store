@@ -75,7 +75,6 @@ const RegisterPage = ({ isAuthenticated }) => {
     setIsEmail(false);
     setIsPassword(false);
     setIsUserName(false);
-    console.log(user);
     dispatch(registerUser(user));
   };
 

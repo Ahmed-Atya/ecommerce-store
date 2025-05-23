@@ -133,8 +133,8 @@ export default function Nav() {
               <Link as={RouterLink} to="/login">
                 login
               </Link>
-              <Link as={RouterLink} to="/login">
-                login
+              <Link as={RouterLink} to="/register">
+                register
               </Link>
              </>
             )}
