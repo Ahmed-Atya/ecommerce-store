@@ -179,7 +179,7 @@ const RegisterPage = ({ isAuthenticated }) => {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user? <Link color={"blue.400"} onClick={()=>{
-                  window.location.href = "/login";
+                 Navigate("/login");
                 }}>Login</Link>
               </Text>
             </Stack>

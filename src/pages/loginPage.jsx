@@ -165,7 +165,8 @@ const LoginPage = ({ isAuthenticated }) => {
               >
                 <Text color={"blue.400"}>don not have an account?</Text>
                 <Text
-                  as={"span"}
+                  as={"router-link"}
+                  to={"/register"}
                   textDecoration={"underline"}
                   _hover={{ cursor: "pointer" }}
                   fontSize={"lg"}
@@ -173,7 +174,7 @@ const LoginPage = ({ isAuthenticated }) => {
                   color={"white"}
 
                   onClick={() => {
-                    window.location.href = "/register";
+                    Navigate("/register");
                   }}
                 >
                   Register
