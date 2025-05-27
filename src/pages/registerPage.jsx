@@ -7,7 +7,6 @@ import {
   FormLabel,
   Input,
   HStack,
-  Link,
   Stack,
   Button,
   Heading,
@@ -22,7 +21,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../app/features/registerSlice";
 import { Navigate } from "react-router-dom";
-
+import { Link as RouterLink } from "react-router-dom";
 const RegisterPage = ({ isAuthenticated }) => {
   // All hooks must be called unconditionally at the top
   const [isEmail, setIsEmail] = useState(false);
@@ -178,10 +177,9 @@ const RegisterPage = ({ isAuthenticated }) => {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                Already a user? <Link color={"blue.400"} onClick={()=>{
-                 Navigate("/login");
-                }}>Login</Link>
+                Already a user? 
               </Text>
+              <RouterLink to={'/login'}  color={"blue.400"} >Login</RouterLink>
             </Stack>
           </Stack>
         </Box>

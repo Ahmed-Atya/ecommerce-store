@@ -36,7 +36,6 @@ const LoginPage = ({ isAuthenticated }) => {
   const bgColor = useColorModeValue("gray.50", "gray.800");
   const boxBgColor = useColorModeValue("white", "gray.700");
 
-
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -61,20 +60,13 @@ const LoginPage = ({ isAuthenticated }) => {
     setIsEmail(false);
     setIsPassword(false);
     dispatch(loginUser(user));
-
   };
-    if (isAuthenticated) {
+  if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 
-
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={bgColor}
-    >
+    <Flex minH={"100vh"} align={"center"} justify={"center"} bg={bgColor}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Sign in to your account</Heading>
@@ -158,27 +150,15 @@ const LoginPage = ({ isAuthenticated }) => {
               >
                 Sign in
               </Button>
-                <Stack
+              <Stack
                 direction={{ base: "column", sm: "row" }}
                 align={"start"}
                 justify={"space-between"}
               >
                 <Text color={"blue.400"}>don not have an account?</Text>
-                <Text
-                  as={"router-link"}
-                  to={"/register"}
-                  textDecoration={"underline"}
-                  _hover={{ cursor: "pointer" }}
-                  fontSize={"lg"}
-                  
-                  color={"white"}
-
-                  onClick={() => {
-                    Navigate("/register");
-                  }}
-                >
+                <RouterLink to={"/login"} color={"blue.400"}>
                   Register
-                </Text>
+                </RouterLink>
               </Stack>
             </Stack>
           </Stack>

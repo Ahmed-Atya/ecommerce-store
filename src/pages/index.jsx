@@ -7,13 +7,13 @@ import ProductCard from "../components/ProductCard";
 const HomePage = () => {
 
   const { data: categoriesData } = useGetDashboardCategoriesQuery();
-
+console.log("categoriesData", categoriesData);
   const getProductsOfPhones = async () => {
     try {
       const { data } = await axios.get(
         `${
           import.meta.env.VITE_STRAPI_API_URL
-        }/api/products?filters[categories][slug][$eq]=smart-phone&populate=*`
+        }/api/products?filters[categories][slug][$eq]=phones&populate=*`
       );
       return data;
     } catch (error) {
@@ -165,7 +165,7 @@ const HomePage = () => {
               <Box
                 key={category.id}
                 cursor="pointer"
-                backgroundImage={`url(${category.image[0].url})`}
+                backgroundImage={`url(${category.image.url})`}
                 backgroundSize="cover"
                 height="300px"
                 width="100%"
@@ -199,7 +199,7 @@ const HomePage = () => {
                     color="white"
                     textShadow="0 2px 4px rgba(0,0,0,0.5)"
                   >
-                    {category.title}
+                    {category.name}
                   </Heading>
                 </Flex>
               </Box>

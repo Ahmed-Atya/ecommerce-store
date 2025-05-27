@@ -42,9 +42,11 @@ const ProductsPage = () => {
     return <div>No products found</div>;
 
   return (
-    <Flex justifyContent={"space-between"} mt={10}>
-      <FilterSidebar/>
-      <Grid
+    // <Flex justifyContent={"space-between"} mt={10}>
+    //   {/* <FilterSidebar/> */}
+     
+    // </Flex>
+     <Grid
         margin={30}
         templateColumns={"repeat(auto-fill,minmax(300px,1fr))"}
         gap={6}
@@ -53,7 +55,6 @@ const ProductsPage = () => {
           <ProductCard key={product.id} product={product} />
         ))}
       </Grid>
-    </Flex>
   );
 };
 
