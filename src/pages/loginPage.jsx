@@ -15,15 +15,16 @@ import {
   InputGroup,
   useColorModeValue,
   FormHelperText,
+  Link, // Added missing Link import
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../app/features/loginSlice";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom"; // Added useNavigate
 
 const LoginPage = ({ isAuthenticated }) => {
-  // All hooks must be called unconditionally at the top
+  const navigate = useNavigate();
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -61,9 +62,12 @@ const LoginPage = ({ isAuthenticated }) => {
     setIsPassword(false);
     dispatch(loginUser(user));
   };
-  if (isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} bg={bgColor}>
@@ -152,13 +156,19 @@ const LoginPage = ({ isAuthenticated }) => {
               </Button>
               <Stack
                 direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
+                align={"center"} // Changed to center for better alignment
+                justify={"center"} // Center the content
               >
-                <Text color={"blue.400"}>don not have an account?</Text>
-                <RouterLink to={"/login"} color={"blue.400"}>
+                <Text>Don't have an account?</Text>
+                {/* Fixed Link component */}
+                <Link 
+                  as={RouterLink} 
+                  to="/register" 
+                  color="blue.400"
+                  ml={1} // Add some left margin
+                >
                   Register
-                </RouterLink>
+                </Link>
               </Stack>
             </Stack>
           </Stack>

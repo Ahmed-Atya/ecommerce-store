@@ -6,7 +6,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  HStack,
   Stack,
   Button,
   Heading,
@@ -20,8 +19,10 @@ import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../app/features/registerSlice";
-import { Navigate } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
+
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 const RegisterPage = ({ isAuthenticated }) => {
   // All hooks must be called unconditionally at the top
   const [isEmail, setIsEmail] = useState(false);
@@ -31,16 +32,14 @@ const RegisterPage = ({ isAuthenticated }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    username: "",
+    username: "", 
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const bgColor = useColorModeValue("gray.50", "gray.800");
   const boxBgColor = useColorModeValue("white", "gray.700");
 
-  if (isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -77,6 +76,11 @@ const RegisterPage = ({ isAuthenticated }) => {
     dispatch(registerUser(user));
   };
 
+    useEffect(() => {
+      if (isAuthenticated) {
+        navigate("/", { replace: true });
+      }
+    }, [isAuthenticated, navigate]);
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} bg={bgColor}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
@@ -179,7 +183,7 @@ const RegisterPage = ({ isAuthenticated }) => {
               <Text align={"center"}>
                 Already a user? 
               </Text>
-              <RouterLink to={'/login'}  color={"blue.400"} >Login</RouterLink>
+              <Link to={'/login'} style={{ color: '#4299E1' }}>Login</Link>
             </Stack>
           </Stack>
         </Box>
