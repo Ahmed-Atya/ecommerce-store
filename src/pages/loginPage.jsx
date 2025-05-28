@@ -15,14 +15,13 @@ import {
   InputGroup,
   useColorModeValue,
   FormHelperText,
-  Link, // Added missing Link import
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../app/features/loginSlice";
-import { useNavigate, Link as RouterLink } from "react-router-dom"; // Added useNavigate
-
+import { useNavigate } from "react-router-dom"; // Added useNavigate
+import {Link} from "react-router-dom"; // Added Link for navigation
 const LoginPage = ({ isAuthenticated }) => {
   const navigate = useNavigate();
   const [isEmail, setIsEmail] = useState(false);
@@ -162,7 +161,6 @@ const LoginPage = ({ isAuthenticated }) => {
                 <Text>Don't have an account?</Text>
                 {/* Fixed Link component */}
                 <Link 
-                  as={RouterLink} 
                   to="/register" 
                   color="blue.400"
                   ml={1} // Add some left margin
